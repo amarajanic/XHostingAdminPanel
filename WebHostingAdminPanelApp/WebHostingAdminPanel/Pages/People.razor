@@ -1,0 +1,79 @@
+﻿@page "/people"
+@using KorisniciLibrary
+@inject KorisniciLibrary.KonekcijaNaBazu _db
+
+
+<h3>Korisnici</h3>
+
+@if (people == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>
+                    Customer Code
+                </th>
+                <th>
+                    Ime
+                </th>
+                <th>
+                    Prezime
+                </th>
+                <th>
+                    Broj Telefona
+                </th>
+                <th>
+                    E-Mail
+                </th>
+                <th>
+                   Korisnički Paketi
+                </th>
+            </tr>
+
+        </thead>
+        <tbody>
+            @foreach (var person in people)
+            {
+                <tr>
+                    <td>
+                        @person.CustomerCode
+                    </td>
+                    <td>
+                        @person.FirstName
+                    </td>
+                    <td>
+                        @person.LastName
+                    </td>
+                    <td>
+                        @person.Phone
+                    </td>
+                    <td>
+                        @person.Email
+                    </td>
+                    <td>
+                        
+                        <a class="btn btn-primary" href="/dashboard/{@person.Id}">Otvori Pakete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+    @code {
+
+        private List<PeopleModel> people;
+
+
+        protected override void OnInitialized()
+        {
+            people = _db.GetAllPeople();
+        }
+
+
+
+    }

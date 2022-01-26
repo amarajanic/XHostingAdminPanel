@@ -1,0 +1,76 @@
+﻿@page "/statistika"
+@inject KorisniciLibrary.KonekcijaNaBazu _db
+@using KorisniciLibrary
+
+<h3>Statistika</h3>
+
+@*<h4>Ukupan broj korisnika: @brojKorisnika</h4>
+    <h4>Ukupan broj aktivnih paketa: @brojAktivnihPaketa</h4>
+    <h4>Ukupan broj Web Hosting paketa: @webHosting</h4>
+    <h4>Ukupan broj Mail Hosting paketa: @mailHosting</h4>
+    <h4>Ukupan broj Game Hosting paketa: @gameHosting</h4>*@
+
+<br />
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                Paket
+            </th>
+            <th>
+                Količina
+            </th>
+        </tr>
+
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                Broj Web Hosting paketa
+            </td>
+            <td>
+                @webHosting
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Broj Mail Hosting paketa
+            </td>
+            <td>
+                @mailHosting
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Broj Game Hosting paketa
+            </td>
+            <td>
+                @gameHosting
+            </td>
+        </tr>
+
+    </tbody>
+</table>
+<h5>Ukupan broj korisnika: @brojKorisnika</h5>
+<h5>Ukupan broj aktivnih paketa: @brojAktivnihPaketa</h5>
+
+
+@code {
+    public int brojKorisnika;
+
+    public int brojAktivnihPaketa;
+
+    public int webHosting, mailHosting, gameHosting;
+
+    protected override void OnInitialized()
+    {
+        brojKorisnika = _db.GetNumberOfCustomers();
+        brojAktivnihPaketa = _db.GetNumberOfAllActivePackets();
+        webHosting = _db.GetCustomersPacketNumberByPacketId(1);
+        mailHosting = _db.GetCustomersPacketNumberByPacketId(2);
+        gameHosting = _db.GetCustomersPacketNumberByPacketId(3);
+    }
+
+
+
+}

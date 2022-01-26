@@ -1,0 +1,107 @@
+﻿@page "/dashboard/{Id}"
+@inject KorisniciLibrary.KonekcijaNaBazu _db
+@using KorisniciLibrary
+
+<h3>Korisnicki paketi korisnika</h3>
+
+<h2>@person.FirstName @person.LastName</h2>
+
+@if (packets == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>
+                    Paket
+                </th>
+                <th>
+                    Cijena
+                </th>
+            </tr>
+
+        </thead>
+        <tbody>
+            @foreach (var packet in packets)
+            {
+                <tr>
+                    <td>
+                        @packet.PacketName
+                    </td>
+                    <td>
+                        @packet.PacketPrice
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code
+ {
+    [Parameter]
+    public string Id { get; set; }
+    public string tempId { get; set; }
+    public List<PeopleModel> customers = new List<PeopleModel>();
+    public List<CustomerPacketsModel> customerPackets = new List<CustomerPacketsModel>();
+
+    public List<Packet> packets = new List<Packet>();
+
+    public PeopleModel person = new PeopleModel();
+
+    //public enum Packet { WebHosting=1,MailHosting=2,GameHosting=3}
+
+
+    protected override void OnInitialized()
+    {
+        customers = _db.GetAllPeople();
+
+        foreach (var customer in customers)
+        {
+            tempId = "{" + customer.Id.ToString() + "}";
+            if (tempId == Id)
+            {
+                person = customer;
+                break;
+            }
+        }
+
+        GetPacketsByCustomerId(person.Id);
+
+        SetCustomerPackets();
+
+
+    }
+
+    public void GetPacketsByCustomerId(int id)
+    {
+        customerPackets = _db.GetCustomerPacketsById(id);
+    }
+
+    public void SetCustomerPackets()
+    {
+        foreach (var packet in customerPackets)
+        {
+            if (packet.PacketId == 1)
+            {
+                packets.Add(new Packet { PacketName = "Web Hosting", PacketPrice = "30 KM / mjesec" });
+            }
+            else if (packet.PacketId == 2)
+            {
+                packets.Add(new Packet { PacketName = "Mail Hosting", PacketPrice = "20 KM / mjesec" });
+            }
+            else if (packet.PacketId == 3)
+            {
+                packets.Add(new Packet { PacketName = "Game Hosting", PacketPrice = "40 KM / mjesec" });
+            }
+            else
+            {
+                throw new NotImplementedException("Nepostojeci paket");
+            }
+        }
+    }
+
+}

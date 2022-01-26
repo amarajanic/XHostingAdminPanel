@@ -1,0 +1,10 @@
+C:\Users\Pc\source\repos\WebHostingAdminPanelApp\KorisniciLibrary\bin\Debug\netstandard2.0\KorisniciLibrary.deps.json
+C:\Users\Pc\source\repos\WebHostingAdminPanelApp\KorisniciLibrary\bin\Debug\netstandard2.0\KorisniciLibrary.dll
+C:\Users\Pc\source\repos\WebHostingAdminPanelApp\KorisniciLibrary\obj\Debug\netstandard2.0\KorisniciLibrary.AssemblyInfoInputs.cache
+C:\Users\Pc\source\repos\WebHostingAdminPanelApp\KorisniciLibrary\obj\Debug\netstandard2.0\KorisniciLibrary.AssemblyInfo.cs
+C:\Users\Pc\source\repos\WebHostingAdminPanelApp\KorisniciLibrary\bin\Debug\netstandard2.0\KorisniciLibrary.pdb
+C:\Users\Pc\source\repos\WebHostingAdminPanelApp\KorisniciLibrary\obj\Debug\netstandard2.0\KorisniciLibrary.csproj.CoreCompileInputs.cache
+C:\Users\Pc\source\repos\WebHostingAdminPanelApp\KorisniciLibrary\obj\Debug\netstandard2.0\KorisniciLibrary.dll
+C:\Users\Pc\source\repos\WebHostingAdminPanelApp\KorisniciLibrary\obj\Debug\netstandard2.0\KorisniciLibrary.pdb
+C:\Users\Pc\source\repos\WebHostingAdminPanelApp\KorisniciLibrary\obj\Debug\netstandard2.0\KorisniciLibrary.csproj.AssemblyReference.cache
+C:\Users\Pc\source\repos\WebHostingAdminPanelApp\KorisniciLibrary\obj\Debug\netstandard2.0\KorisniciLibrary.GeneratedMSBuildEditorConfig.editorconfig
